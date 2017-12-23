@@ -1,0 +1,16 @@
+Package: brmstools
+Type: Package
+Title: Tools and Helpers for brms Package
+Version: 0.1.0
+Date: 2017-12-23
+Authors@R: person(given = "Matti", 
+                  family = "Vuorre", 
+                  email = "mv2521@columbia.edu",
+                  role = c("aut", "cre"),
+                  comment = c(ORCID = "0000-0001-5052-066X"))
+Maintainer: Matti Vuorre <mv2521@columbia.edu>
+Description: Postprocessing and plotting tools for brmsfit objects
+  from brms package.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
