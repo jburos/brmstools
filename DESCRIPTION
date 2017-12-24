@@ -14,3 +14,17 @@ Description: Postprocessing and plotting tools for brmsfit objects
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Depends:
+    R (>= 3.2),
+    ggplot2 (>= 2.2.0),
+    brms (>= 2.0.0)
+Imports: 
+    tidyr,
+    dplyr,
+    ggridges,
+    stats
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1

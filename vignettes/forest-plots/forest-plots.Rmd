@@ -1,0 +1,76 @@
+---
+title: "Forest plots for brmsfit models with varying effects"
+author: "Matti Vuorre"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+<!-- vignette: > -->
+<!--   %\VignetteIndexEntry{Vignette Title} -->
+<!--   %\VignetteEngine{knitr::rmarkdown} -->
+<!--   %\VignetteEncoding{UTF-8} -->
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r packages}
+library(here)
+library(brms)
+library(brmstools)
+library(dplyr)
+```
+
+# Random effects meta-analysis
+
+```{r}
+data("dat.bangertdrowns2004", package = "metafor")
+dat <- dat.bangertdrowns2004 %>%
+  mutate(study = paste0(author, " (", year, ")"), sei = sqrt(vi)) %>%
+  select(study, yi, sei) %>%
+  slice(1:15)
+```
+
+```{r, eval = F}
+fit_rem <- brm(
+  yi | se(sei) ~ 1 + (1|study),
+  data = dat,
+  cores = 4, 
+  control=list(adapt_delta = .99)
+)
+save(fit_rem, file = here("vignettes/forest-plots/fit_rem.rda"))
+```
+
+```{r}
+load(here("vignettes/forest-plots/fit_rem.rda"))
+```
+
+```{r}
+forest(fit_rem)$Intercept + theme_forest()
+```
+
+# Multilevel model
+
+```{r}
+data(sleepstudy, package = "lme4")
+head(sleepstudy)
+```
+
+```{r, eval = F}
+fit_ml <- brm(
+  Reaction ~ Days + (Days|Subject),
+  data = sleepstudy,
+  cores = 4
+)
+save(fit_ml, file = here("vignettes/forest-plots/fit_ml.rda"))
+```
+
+```{r}
+load(here("vignettes/forest-plots/fit_ml.rda"))
+```
+
+```{r}
+forest(fit_ml, digits=0)
+```
