@@ -2,6 +2,7 @@
 
 export(forest)
 export(theme_forest)
+export(tidycoef)
 import(brms)
 import(ggplot2)
 importFrom(stats,coef)
