@@ -3,3 +3,6 @@
 ^LICENSE\.md$
 ^fit_rem\.rda$
 ^vignettes$
+^README\.Rmd$
+^docs$
+^_pkgdown\.yml$

@@ -1,5 +1,8 @@
 # brmstools 0.2.0.9000
 
+* Add readme
+* Add pkgdown documentation
+
 # brmstools 0.2.0
 
 * Improved forest() to display multiple parameters
