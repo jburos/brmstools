@@ -1,8 +1,8 @@
 Package: brmstools
 Type: Package
 Title: Tools and Helpers for brms Package
-Version: 0.1.0
-Date: 2017-12-23
+Version: 0.2.0
+Date: 2017-12-26
 Authors@R: person(given = "Matti", 
                   family = "Vuorre", 
                   email = "mv2521@columbia.edu",
@@ -17,12 +17,14 @@ LazyData: true
 Depends:
     R (>= 3.2),
     ggplot2 (>= 2.2.0),
-    brms (>= 2.0.0)
+    brms (>= 2.0.0),
+    stats
 Imports: 
     tidyr,
     dplyr,
     ggridges,
-    stats
+    forcats,
+    tibble
 Suggests: 
     knitr,
     rmarkdown

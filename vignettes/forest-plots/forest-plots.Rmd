@@ -23,7 +23,13 @@ library(brmstools)
 library(dplyr)
 ```
 
+# Introduction
+
+Forest plots display estimated parameters from multiple sources (studies, participants, etc.) in one figure. They are most commonly used in meta-analysis, where individual studies are used to inform an average, or meta-analytic, overall estimate. However, they can be seamlessly applied to other types of multilevel models--models in which parameters are assumed to vary among units. **brmstools**' `forest()` function draws forest plots from `brmsfit` objects. They should be most useful for meta-analytic models, but can be produced from any `brmsfit` with one or more varying parameters.
+
 # Random effects meta-analysis
+
+We illustrate using a data set from the metafor package.
 
 ```{r}
 data("dat.bangertdrowns2004", package = "metafor")
@@ -33,6 +39,8 @@ dat <- dat.bangertdrowns2004 %>%
   slice(1:15)
 ```
 
+brms allows flexible specification of meta-analytic models.
+
 ```{r, eval = F}
 fit_rem <- brm(
   yi | se(sei) ~ 1 + (1|study),
@@ -40,23 +48,51 @@ fit_rem <- brm(
   cores = 4, 
   control=list(adapt_delta = .99)
 )
+```
+
+```{r, eval = F, echo=F}
+# Save time by using locally saved models
 save(fit_rem, file = here("vignettes/forest-plots/fit_rem.rda"))
 ```
 
-```{r}
+```{r, echo = F}
 load(here("vignettes/forest-plots/fit_rem.rda"))
 ```
 
+Use `forest()` to draw the forest plot:
+
 ```{r}
-forest(fit_rem)$Intercept + theme_forest()
+forest(fit_rem)
+```
+
+There are various options (see `?forest`)
+
+```{r}
+forest(fit_rem, 
+       level = .80, 
+       av_name = "Meta-Analytic\nEstimate", 
+       col_ridge = "purple", 
+       fill_ridge = "grey90")
+```
+
+Data points can also be shown (note this probably only makes sense with a meta-analytic model):
+
+```{r}
+forest(fit_rem, show_data = T)
 ```
 
 # Multilevel model
+
+The `forest()` function can be seamlessly applied to any multilevel model. 
+
+We use example data from the lme4 package.
 
 ```{r}
 data(sleepstudy, package = "lme4")
 head(sleepstudy)
 ```
+
+A multilevel model with varying intercepts and slopes (effect of `Days`):
 
 ```{r, eval = F}
 fit_ml <- brm(
@@ -64,13 +100,31 @@ fit_ml <- brm(
   data = sleepstudy,
   cores = 4
 )
+```
+
+```{r, eval = F, echo = F}
 save(fit_ml, file = here("vignettes/forest-plots/fit_ml.rda"))
 ```
 
-```{r}
+```{r, echo = F}
 load(here("vignettes/forest-plots/fit_ml.rda"))
 ```
+
+If there are multiple varying parameters, users can input a variable name:
+
+```{r}
+forest(fit_ml, pars = "Days")
+```
+
+Or let the function automatically draw a plot with all the variables:
 
 ```{r}
 forest(fit_ml, digits=0)
 ```
+
+You can also turn off the ridgeline plots (densities)
+
+```{r}
+forest(fit_ml, density = F, digits=0)
+```
+

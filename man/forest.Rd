@@ -4,15 +4,20 @@
 \alias{forest}
 \title{Forest plots for brmsfit objects}
 \usage{
-forest(model, level = 0.95, sort = TRUE, show_data = FALSE,
-  col_ridge = NA, density = TRUE, text = TRUE, rel_min_height = 0.01,
-  scale = 0.9, fill_ridge = "grey75", digits = 2)
+forest(model, pars = NA, level = 0.95, av_name = "Average", sort = TRUE,
+  show_data = FALSE, col_ridge = NA, fill_ridge = "grey75",
+  density = TRUE, text = TRUE, rel_min_height = 0.01, scale = 0.9,
+  digits = 2, theme_forest = TRUE)
 }
 \arguments{
 \item{model}{A brmsfit object.}
 
+\item{pars}{Parameters to plot, defaults to all (NA).}
+
 \item{level}{The "Confidence" level for the Credible Intervals.
 Defaults to 0.95.}
+
+\item{av_name}{Name of average parameter (e.g. `"Meta-Analytic\\nestimate"`)}
 
 \item{sort}{Logical; whether to sort the estimates in ascending
 order of magnitude from bottom to top. Defaults to FALSE.}
@@ -22,6 +27,8 @@ and standard error below the meta-analytic estimates. Defaults to FALSE.}
 
 \item{col_ridge}{String; color for the outlines of the densities. Default: NA.}
 
+\item{fill_ridge}{String; color to fill the densities. Defaults to "grey65".}
+
 \item{density}{Logical; should densities be shown?}
 
 \item{text}{Logical; should estimates' numerical summaries be included?}
@@ -30,9 +37,9 @@ and standard error below the meta-analytic estimates. Defaults to FALSE.}
 
 \item{scale}{Passed to [ggridges::geom_density_ridges()].}
 
-\item{fill_ridge}{String; color to fill the densities. Defaults to "grey65".}
-
 \item{digits}{Digits to display in numerical summaries.}
+
+\item{theme_forest}{Use [brmstools::theme_forest()] ggplot2 theme?}
 }
 \description{
 This function draws a forest plot for a brmsfit model;

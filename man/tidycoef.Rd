@@ -4,10 +4,17 @@
 \alias{tidycoef}
 \title{Tidy parameters from brmsfit objects}
 \usage{
-tidycoef(model, summary = FALSE, level = 0.95)
+tidycoef(model, pars = NA, summary = FALSE, level = 0.95)
 }
 \arguments{
-\item{level}{}
+\item{model}{A brmsfit.}
+
+\item{pars}{Parameters to extract; must match exactly. Combine many with
+`c(...)`.}
+
+\item{summary}{Should summary statistics be returned instead of raw values.}
+
+\item{level}{For interval limits.}
 }
 \value{
 a tibble

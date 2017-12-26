@@ -5,17 +5,23 @@
 #' from the parameter. Especially useful for plots where the "fixed"
 #' parameters should be shown next to their "random" counterparts.
 #'
-#' @param model
-#' @param summary
-#' @param level
+#' @param model A brmsfit.
+#' @param pars Parameters to extract; must match exactly. Combine many with
+#' `c(...)`.
+#' @param summary Should summary statistics be returned instead of raw values.
+#' @param level For interval limits.
 #'
 #' @return a tibble
 #' @export
-tidycoef <- function(model, summary = FALSE, level = .95) {
+tidycoef <- function(model, pars = NA, summary = FALSE, level = .95) {
 
   grouping <- unique(model$ranef$group)
   if (length(grouping) > 1) stop("More than 1 grouping factor.", call. = F)
-  parameters <- dimnames(coef(model)[[grouping]])[[3]]
+  if (is.na(pars)) {
+    parameters <- dimnames(coef(model)[[grouping]])[[3]]
+  } else {
+    parameters <- pars
+  }
   ranefs <- vector("list", length(parameters))
   names(ranefs) <- parameters
   for (parameter in parameters) {
@@ -32,7 +38,8 @@ tidycoef <- function(model, summary = FALSE, level = .95) {
   }
   ranefs <- Reduce(function(...) merge(..., all=T), ranefs)
   ranefs[["type"]] <- "r"
-  samples_f <- as.data.frame(fixef(model, summary = FALSE))
+  samples_f <- tibble::as_tibble(as.data.frame(fixef(model, summary = FALSE)))
+  samples_f <- samples_f[,parameters]
   samples_f[[grouping]] <- NA
   samples_f[["type"]] <- "b"
   samples_f[["iter"]] <- rownames(samples_f)
@@ -45,15 +52,15 @@ tidycoef <- function(model, summary = FALSE, level = .95) {
   if (summary) {
     # Summaries
     probs <- c(.5 - level / 2, .5 + level / 2)
-    samples_sum <- group_by_(samples, "type", grouping, "Parameter")
-    samples_sum <- summarise(
+    samples_sum <- dplyr::group_by_(samples, "type", grouping, "Parameter")
+    samples_sum <- dplyr::summarise_(
       samples_sum,
-      Estimate = mean(value),
-      Est.Error = sd(value),
-      lwr = quantile(value, probs[1]),
-      upr = quantile(value, probs[2])
+      Estimate = ~mean(value),
+      Est.Error = ~sd(value),
+      lwr = ~quantile(value, probs[1]),
+      upr = ~quantile(value, probs[2])
     )
-    samples_sum <- ungroup(samples_sum)
+    samples_sum <- dplyr::ungroup(samples_sum)
     names(samples_sum) <- c("type", grouping, "Parameter",
                         "Estimate", "Est.Error",
                         paste0(probs[1]*100, "%ile"),
