@@ -47,6 +47,9 @@
 <li>
       <a href="../../articles/forest-plots/forest-plots.html">Forest plots for brmsfit models with varying effects</a>
     </li>
+    <li>
+      <a href="../../articles/panel-spaghetti-plots/panel-spaghetti-plots.html">Panel and spaghetti plots</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -68,7 +71,7 @@
       <h1>Forest plots for brmsfit models with varying effects</h1>
                         <h4 class="author">Matti Vuorre</h4>
             
-            <h4 class="date">2017-12-26</h4>
+            <h4 class="date">2017-12-27</h4>
           </div>
 
     
@@ -82,6 +85,7 @@
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <p>Forest plots display estimated parameters from multiple sources (studies, participants, etc.) in one figure. They are most commonly used in meta-analysis, where individual studies are used to inform an average, or meta-analytic, overall estimate. However, they can be seamlessly applied to other types of multilevel models–models in which parameters are assumed to vary among units. <strong>brmstools</strong>’ <code><a href="../../reference/forest.html">forest()</a></code> function draws forest plots from <code>brmsfit</code> objects. They should be most useful for meta-analytic models, but can be produced from any <code>brmsfit</code> with one or more varying parameters.</p>
+<p>The <code><a href="../../reference/forest.html">forest()</a></code> function uses the fantastic <a href="https://github.com/clauswilke/ggridges">ggridges R package</a> in the backend, and assumes you’ve installed it. If you haven’t, <code><a href="../../reference/forest.html">forest()</a></code> will return an error.</p>
 </div>
 <div id="random-effects-meta-analysis" class="section level1">
 <h1 class="hasAnchor">

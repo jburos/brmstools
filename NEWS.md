@@ -1,5 +1,8 @@
-# brmstools 0.2.0.9000
+# brmstools 0.3.0
 
+* New function: `panels()` for panel plots
+* New function: `spaghetti()` for spaghetti plots
+* Use `tidyfitted()` in the backend for above functions, for extracting fitted values at multiple levels
 * Add readme
 * Add pkgdown documentation
 

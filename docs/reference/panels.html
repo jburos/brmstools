@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A ggplot2 theme for forest plots — theme_forest • brmstools</title>
+<title>Panel plots for brmsfit models — panels • brmstools</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -93,21 +93,80 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A ggplot2 theme for forest plots</h1>
+    <h1>Panel plots for brmsfit models</h1>
     </div>
 
     
-    <p>A clean theme</p>
+    <p>Panel plots display fitted values for each grouping factor in a
+separate panel.</p>
     
 
-    <pre class="usage"><span class='fu'>theme_forest</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>panels</span>(<span class='no'>model</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>xvar</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>line_col</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>line_lty</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ribbon_col</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>ribbon_fill</span> <span class='kw'>=</span> <span class='st'>"grey60"</span>, <span class='kw'>ribbon_alpha</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>model</th>
+      <td><p>A brmsfit model</p></td>
+    </tr>
+    <tr>
+      <th>level</th>
+      <td><p>For limits of credible intervals</p></td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td><p>Should data be shown?</p></td>
+    </tr>
+    <tr>
+      <th>sort</th>
+      <td><p>Sort panels based on a variable</p></td>
+    </tr>
+    <tr>
+      <th>xvar</th>
+      <td><p>What variable should be on the x-axis</p></td>
+    </tr>
+    <tr>
+      <th>line_col</th>
+      <td><p>Line color</p></td>
+    </tr>
+    <tr>
+      <th>line_lty</th>
+      <td><p>Line type</p></td>
+    </tr>
+    <tr>
+      <th>ribbon_col</th>
+      <td><p>Ribbon color</p></td>
+    </tr>
+    <tr>
+      <th>ribbon_fill</th>
+      <td><p>Ribbon fill</p></td>
+    </tr>
+    <tr>
+      <th>ribbon_alpha</th>
+      <td><p>Ribbon transparency</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Passed to [tidyfitted()]</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a ggplot</p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

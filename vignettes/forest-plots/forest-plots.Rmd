@@ -23,6 +23,8 @@ library(dplyr)
 
 Forest plots display estimated parameters from multiple sources (studies, participants, etc.) in one figure. They are most commonly used in meta-analysis, where individual studies are used to inform an average, or meta-analytic, overall estimate. However, they can be seamlessly applied to other types of multilevel models--models in which parameters are assumed to vary among units. **brmstools**' `forest()` function draws forest plots from `brmsfit` objects. They should be most useful for meta-analytic models, but can be produced from any `brmsfit` with one or more varying parameters.
 
+The `forest()` function uses the fantastic [ggridges R package](https://github.com/clauswilke/ggridges) in the backend, and assumes you've installed it. If you haven't, `forest()` will return an error.
+
 # Random effects meta-analysis
 
 We illustrate using a data set from the metafor package.

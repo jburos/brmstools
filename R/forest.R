@@ -21,6 +21,8 @@
 #' @param digits Digits to display in numerical summaries.
 #' @param theme_forest Use [brmstools::theme_forest()] ggplot2 theme?
 #'
+#' @return a ggplot
+#'
 #' @importFrom stats coef
 #' @export
 forest <- function(model,

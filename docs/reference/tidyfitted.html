@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A ggplot2 theme for forest plots — theme_forest • brmstools</title>
+<title>Tidy fitted values from brmsfit models — tidyfitted • brmstools</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -93,21 +93,50 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A ggplot2 theme for forest plots</h1>
+    <h1>Tidy fitted values from brmsfit models</h1>
     </div>
 
     
-    <p>A clean theme</p>
+    <p>This function extracts fitted values in a format expected by other
+plotting functions</p>
     
 
-    <pre class="usage"><span class='fu'>theme_forest</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>tidyfitted</span>(<span class='no'>model</span>, <span class='kw'>xvar</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>model</th>
+      <td><p>a brmsfit model</p></td>
+    </tr>
+    <tr>
+      <th>xvar</th>
+      <td><p>Predictor variable to evaluate fitted values on</p></td>
+    </tr>
+    <tr>
+      <th>level</th>
+      <td><p>For credible interval limits.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Passed to [brms::fitted()]</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a tibble</p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

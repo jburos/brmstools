@@ -41,6 +41,9 @@ and standard error below the meta-analytic estimates. Defaults to FALSE.}
 
 \item{theme_forest}{Use [brmstools::theme_forest()] ggplot2 theme?}
 }
+\value{
+a ggplot
+}
 \description{
 This function draws a forest plot for a brmsfit model;
 especially useful for random-effects meta-analytic models.

@@ -1,0 +1,64 @@
+---
+title: "Panel and spaghetti plots"
+author: "Matti Vuorre"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r packages, message = F}
+library(here)
+library(brms)
+library(brmstools)
+library(dplyr)
+```
+
+# Panel plot
+
+A panel plot displays each units data along with the model's fitted values. Currently, the function only supports models with one predictor variable.
+
+```{r, echo = F}
+load(here("vignettes/forest-plots/fit_ml.rda"))
+```
+
+These functions rely on obtaining tidy tibbles of the model's fitted values:
+
+```{r}
+tidyfitted(fit_ml)
+```
+
+Use `panels()` by setting a variable to be drawn on the x-axis (`xvar`), and (optional) parameter to sort the panels by:
+
+```{r}
+panels(fit_ml, xvar = "Days", sort = "Days")
+```
+
+Show data as points with `panels(..., data = T):
+
+```{r}
+panels(fit_ml, xvar = "Days", sort = "Days", data = T)
+```
+
+There are other options (see `?panels`):
+
+```{r}
+panels(fit_ml, 
+       xvar = "Days", 
+       ribbon_fill = NA, 
+       ribbon_col = "black")
+```
+
+# Spaghetti plots
+
+A spaghetti plot displays regression lines of all levels of the grouping factor in a single panel.
+
+```{r}
+spaghetti(fit_ml, xvar = "Days")
+```
+
