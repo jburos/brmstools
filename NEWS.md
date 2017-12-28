@@ -1,3 +1,5 @@
+# brmstools 0.3.0.9000
+
 # brmstools 0.3.0
 
 * New function: `panels()` for panel plots
