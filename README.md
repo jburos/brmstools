@@ -10,6 +10,16 @@ brmstools provides convenient plotting and post-processing functions for
 brmsfit objects (bayesian regression models fitted with the [brms R
 package](https://github.com/paul-buerkner/brms)).
 
+Install brmstools from GitHub with
+[devtools](https://cran.r-project.org/package=devtools):
+
+``` r
+# install.packages("devtools")
+devtools::install_github("mvuorre/brmstools")
+```
+
+Loading brmstools also loads the brms package:
+
 ``` r
 library(brmstools)
 #> Loading required package: ggplot2
@@ -66,6 +76,18 @@ spaghetti(fit_ml, xvar = "Days")
 ```
 
 <img src="man/figures/README-spaghetti-1.png" width="100%" />
+
+# Coefficient plots
+
+`coefplot()` draws coefficient plots:
+
+``` r
+coefplot(fit_ml)
+```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+
+# More information
 
 Examples and instructions can be found at
 <https://mvuorre.github.io/brmstools>.

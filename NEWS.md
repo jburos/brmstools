@@ -1,4 +1,6 @@
-# brmstools 0.3.0.9000
+# brmstools 0.4.0
+
+* New function: `coefplot()` for visually summarizing a model's coefficients
 
 # brmstools 0.3.0
 

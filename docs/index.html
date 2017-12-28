@@ -45,6 +45,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/coefficient-plots/coefficient-plots.html">Coefficient plots</a>
+    </li>
+    <li>
       <a href="articles/forest-plots/forest-plots.html">Forest plots for brmsfit models with varying effects</a>
     </li>
     <li>
@@ -78,14 +81,18 @@
 <a href="#brmstools" class="anchor"></a>brmstools</h1></div>
 
 <p>brmstools provides convenient plotting and post-processing functions for brmsfit objects (bayesian regression models fitted with the <a href="https://github.com/paul-buerkner/brms">brms R package</a>).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(brmstools)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; Loading required package: ggplot2</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; Loading required package: brms</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; Loading required package: Rcpp</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt; Loading 'brms' package (version 2.0.1). Useful instructions</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt; can be found by typing help('brms'). A more detailed introduction</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt; to the package is available through vignette('brms_overview').</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; Run theme_set(theme_default()) to use the default bayesplot theme.</span></a></code></pre></div>
+<p>Install brmstools from GitHub with <a href="https://cran.r-project.org/package=devtools">devtools</a>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"mvuorre/brmstools"</span>)</a></code></pre></div>
+<p>Loading brmstools also loads the brms package:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(brmstools)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Loading required package: ggplot2</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Loading required package: brms</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; Loading required package: Rcpp</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; Loading 'brms' package (version 2.0.1). Useful instructions</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; can be found by typing help('brms'). A more detailed introduction</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; to the package is available through vignette('brms_overview').</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; Run theme_set(theme_default()) to use the default bayesplot theme.</span></a></code></pre></div>
 <p>brmstools is in beta version so will probably break down with some inputs: <a href="https://github.com/mvuorre/brmstools/issues">Suggestions for improvements and bug reports</a> are warmly welcomed.</p>
 <p><a href="https://github.com/paul-buerkner/brms">brms</a> makes it easy to fit (complex) models with Stan. The flexible <code><a href="http://www.rdocumentation.org/packages/brms/topics/marginal_effects">brms::marginal_effects()</a></code> and <code>brms::plot()</code> methods allow various visualizations of fitted brms models. However, I found myself repeatedly writing code for spaghetti, forest, and panel plots, all of which are difficult to create with built-in brms functions. This package provides functions for easily creating these types of figures, and other miscellaneous helper functions for post-processing brmsfit models.</p>
 </div>
@@ -93,23 +100,34 @@
 <h1 class="hasAnchor">
 <a href="#forest-plots" class="anchor"></a>Forest plots</h1>
 <p>Notably, <code><a href="reference/forest.html">forest()</a></code> draws forest plots for meta-analytic and multilevel models:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="reference/forest.html">forest</a></span>(fit_rem, <span class="dt">digits=</span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Picking joint bandwidth of 0.0227</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="reference/forest.html">forest</a></span>(fit_rem, <span class="dt">digits=</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; Picking joint bandwidth of 0.0227</span></a></code></pre></div>
 <p><img src="reference/figures/README-forest-1.png" width="100%"></p>
 </div>
 <div id="panel-plots" class="section level1">
 <h1 class="hasAnchor">
 <a href="#panel-plots" class="anchor"></a>Panel plots</h1>
 <p><code><a href="reference/panels.html">panels()</a></code> draws panel plots:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="reference/panels.html">panels</a></span>(fit_ml, <span class="dt">xvar =</span> <span class="st">"Days"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/panels.html">panels</a></span>(fit_ml, <span class="dt">xvar =</span> <span class="st">"Days"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-panels-1.png" width="100%"></p>
 </div>
 <div id="spaghetti-plots" class="section level1">
 <h1 class="hasAnchor">
 <a href="#spaghetti-plots" class="anchor"></a>Spaghetti plots</h1>
 <p><code><a href="reference/spaghetti.html">spaghetti()</a></code> draws spaghetti plots:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/spaghetti.html">spaghetti</a></span>(fit_ml, <span class="dt">xvar =</span> <span class="st">"Days"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="reference/spaghetti.html">spaghetti</a></span>(fit_ml, <span class="dt">xvar =</span> <span class="st">"Days"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-spaghetti-1.png" width="100%"></p>
+</div>
+<div id="coefficient-plots" class="section level1">
+<h1 class="hasAnchor">
+<a href="#coefficient-plots" class="anchor"></a>Coefficient plots</h1>
+<p><code><a href="reference/coefplot.html">coefplot()</a></code> draws coefficient plots:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="reference/coefplot.html">coefplot</a></span>(fit_ml)</a></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
+</div>
+<div id="more-information" class="section level1">
+<h1 class="hasAnchor">
+<a href="#more-information" class="anchor"></a>More information</h1>
 <p>Examples and instructions can be found at <a href="https://mvuorre.github.io/brmstools" class="uri">https://mvuorre.github.io/brmstools</a>.</p>
 </div>
 </div>

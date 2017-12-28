@@ -1,0 +1,55 @@
+---
+title: "Coefficient plots"
+author: "Matti Vuorre"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r packages, message = F}
+library(here)
+library(brms)
+library(brmstools)
+library(dplyr)
+```
+
+```{r, echo = F}
+load(here("vignettes/forest-plots/fit_ml.rda"))
+```
+
+```{r}
+head(fit_ml$data)
+```
+
+```{r}
+summary(fit_ml)
+```
+
+# Coefficient plots
+
+A coefficient plot is a visual replacement of a table summarizing a fitted model's parameters. brmstools' `coefplot()` draws population-level and group-specific parameter means and credible intervals on the same plot.
+
+```{r}
+coefplot(fit_ml, 
+         level = .8,
+         r_intervals = TRUE, 
+         r_col = "firebrick")
+```
+
+Users can plot a single parameter by naming it:
+
+```{r}
+coefplot(fit_ml, pars = "Days", r_intervals = T)
+```
+
+Or only the population-level / group-specific parameters:
+
+```{r}
+coefplot(fit_ml, type = "b")
+```
