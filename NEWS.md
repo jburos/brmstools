@@ -1,3 +1,7 @@
+# brmstools 0.5.0
+
+* Use testthat for unit testing
+
 # brmstools 0.4.0
 
 * New function: `coefplot()` for visually summarizing a model's coefficients
