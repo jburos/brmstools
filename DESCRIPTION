@@ -1,8 +1,8 @@
 Package: brmstools
 Type: Package
 Title: Tools and Helpers for brms Package
-Version: 0.5.0
-Date: 2017-12-28
+Version: 0.5.1
+Date: 2017-12-29
 Authors@R: person(given = "Matti", 
                   family = "Vuorre", 
                   email = "mv2521@columbia.edu",
@@ -32,3 +32,4 @@ Suggests:
     testthat
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
+Roxygen: list(markdown = TRUE)

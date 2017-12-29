@@ -27,7 +27,7 @@ spaghetti(model, level = 0.95, xvar = NA, line_col = "black",
 
 \item{average}{Show average fitted values?}
 
-\item{...}{Passed to [tidyfitted()]}
+\item{...}{Passed to \code{\link[=tidyfitted]{tidyfitted()}}}
 }
 \value{
 a ggplot

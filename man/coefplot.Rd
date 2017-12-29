@@ -33,12 +33,12 @@ both types ("br", default) of parameters.}
 
 \item{r_alpha}{Transparency of group-specific estimates}
 
-\item{...}{Passed to [tidyfitted()]}
+\item{...}{Passed to \code{\link[=tidyfitted]{tidyfitted()}}}
 }
 \value{
 a ggplot
 }
 \description{
-A more traditional version of [bayesplot::mcmc_intervals()], additionally
+A more traditional version of \code{\link[bayesplot:mcmc_intervals]{bayesplot::mcmc_intervals()}}, additionally
 showing parameter means (and CIs) for each grouping factor.
 }

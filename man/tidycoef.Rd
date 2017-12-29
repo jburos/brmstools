@@ -10,7 +10,7 @@ tidycoef(model, pars = NA, summary = FALSE, level = 0.95)
 \item{model}{A brmsfit.}
 
 \item{pars}{Parameters to extract; must match exactly. Combine many with
-`c(...)`.}
+\code{c(...)}.}
 
 \item{summary}{Should summary statistics be returned instead of raw values.}
 

@@ -1,5 +1,7 @@
 # brmstools 0.5.0.9000
 
+* Use markdown in roxygen documentation
+
 # brmstools 0.5.0
 
 * Use testthat for unit testing

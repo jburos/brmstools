@@ -17,7 +17,7 @@ forest(model, pars = NA, level = 0.95, av_name = "Average", sort = TRUE,
 \item{level}{The "Confidence" level for the Credible Intervals.
 Defaults to 0.95.}
 
-\item{av_name}{Name of average parameter (e.g. `"Meta-Analytic\\nestimate"`)}
+\item{av_name}{Name of average parameter (e.g. \code{"Meta-Analytic\\nestimate"})}
 
 \item{sort}{Logical; whether to sort the estimates in ascending
 order of magnitude from bottom to top. Defaults to FALSE.}
@@ -33,13 +33,13 @@ and standard error below the meta-analytic estimates. Defaults to FALSE.}
 
 \item{text}{Logical; should estimates' numerical summaries be included?}
 
-\item{rel_min_height}{Passed to [ggridges::geom_density_ridges()].}
+\item{rel_min_height}{Passed to \code{\link[ggridges:geom_density_ridges]{ggridges::geom_density_ridges()}}.}
 
-\item{scale}{Passed to [ggridges::geom_density_ridges()].}
+\item{scale}{Passed to \code{\link[ggridges:geom_density_ridges]{ggridges::geom_density_ridges()}}.}
 
 \item{digits}{Digits to display in numerical summaries.}
 
-\item{theme_forest}{Use [brmstools::theme_forest()] ggplot2 theme?}
+\item{theme_forest}{Use \code{\link[=theme_forest]{theme_forest()}} ggplot2 theme?}
 }
 \value{
 a ggplot

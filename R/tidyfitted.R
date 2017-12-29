@@ -6,7 +6,7 @@
 #' @param model a brmsfit model
 #' @param xvar Predictor variable to evaluate fitted values on
 #' @param level For credible interval limits.
-#' @param ... Passed to [brms::fitted()]
+#' @param ... Passed to [brms::fitted.brmsfit()]
 #'
 #' @return a tibble
 #' @export

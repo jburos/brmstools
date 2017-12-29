@@ -13,7 +13,7 @@ tidyfitted(model, xvar = NA, level = 0.95, ...)
 
 \item{level}{For credible interval limits.}
 
-\item{...}{Passed to [brms::fitted()]}
+\item{...}{Passed to \code{\link[brms:fitted.brmsfit]{brms::fitted.brmsfit()}}}
 }
 \value{
 a tibble

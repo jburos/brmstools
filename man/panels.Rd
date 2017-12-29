@@ -29,7 +29,7 @@ panels(model, level = 0.95, data = T, sort = NA, xvar = NA,
 
 \item{ribbon_alpha}{Ribbon transparency}
 
-\item{...}{Passed to [tidyfitted()]}
+\item{...}{Passed to \code{\link[=tidyfitted]{tidyfitted()}}}
 }
 \value{
 a ggplot

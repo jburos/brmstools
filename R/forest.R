@@ -19,7 +19,7 @@
 #' @param rel_min_height Passed to [ggridges::geom_density_ridges()].
 #' @param scale Passed to [ggridges::geom_density_ridges()].
 #' @param digits Digits to display in numerical summaries.
-#' @param theme_forest Use [brmstools::theme_forest()] ggplot2 theme?
+#' @param theme_forest Use [theme_forest()] ggplot2 theme?
 #'
 #' @return a ggplot
 #'
