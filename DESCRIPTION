@@ -1,7 +1,7 @@
 Package: brmstools
 Type: Package
 Title: Tools and Helpers for brms Package
-Version: 0.4.0
+Version: 0.5.0
 Date: 2017-12-28
 Authors@R: person(given = "Matti", 
                   family = "Vuorre", 
@@ -28,6 +28,7 @@ Imports:
     ggstance
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
