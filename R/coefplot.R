@@ -34,8 +34,13 @@ coefplot <- function(model,
                      r_intervals = FALSE,
                      r_alpha = .5,
                      ...) {
-  d <- tidycoef(model, level = level, pars = pars, summary = T)
+
   grouping <- get_grouping(model, grouping)
+  d <- tidycoef(model,
+                grouping = grouping,
+                level = level,
+                pars = pars,
+                summary = T)
   b <- d[d[["type"]]=="b", ]
   r <- d[d[["type"]]=="r", ]
   probs <- c(.5 - level / 2, .5 + level / 2)

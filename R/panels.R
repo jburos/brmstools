@@ -32,9 +32,9 @@ panels <- function(model,
                    ribbon_alpha = .2,
                    ...) {
 
-  d <- tidyfitted(model, level = level, ...)
-  d <- d[d[["type"]]=="r",]
   grouping <- get_grouping(model, grouping)
+  d <- tidyfitted(model, level = level, grouping = grouping, ...)
+  d <- d[d[["type"]]=="r",]
 
   # Order panels on desired parameter
   if (!is.na(sort)) {
