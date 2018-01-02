@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coefficient plots for brms models — coefplot • brmstools</title>
+<title>Get grouping factors for brmsfit model — get_grouping • brmstools</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -96,81 +96,31 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coefficient plots for brms models</h1>
+    <h1>Get grouping factors for brmsfit model</h1>
     </div>
 
     
-    <p>A more traditional version of <code><a href='http://www.rdocumentation.org/packages/bayesplot/topics/MCMC-intervals'>bayesplot::mcmc_intervals()</a></code>, additionally
-showing parameter means (and CIs) for each grouping factor.</p>
+    <p>Used internally by brmstools</p>
     
 
-    <pre class="usage"><span class='fu'>coefplot</span>(<span class='no'>model</span>, <span class='kw'>grouping</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>pars</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"br"</span>,
-  <span class='kw'>interval_col</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>interval_h</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>point_col</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
-  <span class='kw'>point_size</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>r_col</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>r_intervals</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>r_alpha</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>get_grouping</span>(<span class='no'>model</span>, <span class='no'>grouping</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>A brmsfit model</p></td>
+      <td><p>a brmsfit model</p></td>
     </tr>
     <tr>
       <th>grouping</th>
-      <td><p>Name of grouping variable (e.g. <code>(1 | grouping)</code>). Defaults
-to <code>NA</code> which returns the unique / first grouping factor in model.</p></td>
-    </tr>
-    <tr>
-      <th>level</th>
-      <td><p>For limits of credible intervals</p></td>
-    </tr>
-    <tr>
-      <th>pars</th>
-      <td><p>Which parameters to show (defaults to NA (all parameters)).</p></td>
-    </tr>
-    <tr>
-      <th>type</th>
-      <td><p>Show population level ("b"), group-specific ("r"), or
-both types ("br", default) of parameters.</p></td>
-    </tr>
-    <tr>
-      <th>interval_col</th>
-      <td><p>Color of intervals</p></td>
-    </tr>
-    <tr>
-      <th>interval_h</th>
-      <td><p>Height of bars at credible interval limits</p></td>
-    </tr>
-    <tr>
-      <th>point_col</th>
-      <td><p>Color of points</p></td>
-    </tr>
-    <tr>
-      <th>point_size</th>
-      <td><p>Size of points</p></td>
-    </tr>
-    <tr>
-      <th>r_col</th>
-      <td><p>Color of points for group-specific posterior means</p></td>
-    </tr>
-    <tr>
-      <th>r_intervals</th>
-      <td><p>Show credible intervals for group-specific parameters?</p></td>
-    </tr>
-    <tr>
-      <th>r_alpha</th>
-      <td><p>Transparency of group-specific estimates</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Passed to <code><a href='tidyfitted.html'>tidyfitted()</a></code></p></td>
+      <td><p>name of grouping factor or <code>NA</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a ggplot</p>
+    <p>character</p>
     
 
   </div>

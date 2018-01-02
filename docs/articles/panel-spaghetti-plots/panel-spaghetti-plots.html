@@ -74,7 +74,7 @@
       <h1>Panel and spaghetti plots</h1>
                         <h4 class="author">Matti Vuorre</h4>
             
-            <h4 class="date">2017-12-28</h4>
+            <h4 class="date">2018-01-02</h4>
           </div>
 
     
@@ -91,18 +91,18 @@
 <p>These functions rely on obtaining tidy tibbles of the model’s fitted values:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../../reference/tidyfitted.html">tidyfitted</a></span>(fit_ml)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; # A tibble: 190 x 7</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;     Days Subject  type Estimate Est.Error `2.5%ile` `97.5%ile`</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;    &lt;dbl&gt;  &lt;fctr&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  1     0     308     r 254.2409 12.882455  228.5044   279.5504</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  2     1     308     r 273.7942 11.038596  251.8504   295.5680</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;  3     2     308     r 293.3474  9.483224  274.7019   311.7569</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  4     3     308     r 312.9007  8.378570  296.5008   329.2506</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  5     4     308     r 332.4540  7.915637  316.6773   348.0713</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  6     5     308     r 352.0073  8.203789  335.6809   367.7638</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  7     6     308     r 371.5605  9.172512  353.3690   389.5057</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  8     7     308     r 391.1138 10.637469  370.2497   411.8207</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  9     8     308     r 410.6671 12.424352  386.5488   434.8250</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 10     9     308     r 430.2204 14.413925  402.3105   458.4459</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;     Days Subject type  Estimate Est.Error `2.5%ile` `97.5%ile`</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;    &lt;dbl&gt; &lt;fctr&gt;  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  1  0    308     r          254     12.9        229        280</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  2  1.00 308     r          274     11.0        252        296</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;  3  2.00 308     r          293      9.48       275        312</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  4  3.00 308     r          313      8.38       297        329</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  5  4.00 308     r          332      7.92       317        348</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  6  5.00 308     r          352      8.20       336        368</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  7  6.00 308     r          372      9.17       353        390</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  8  7.00 308     r          391     10.6        370        412</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  9  8.00 308     r          411     12.4        387        435</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 10  9.00 308     r          430     14.4        402        458</span></a>
 <a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; # ... with 180 more rows</span></a></code></pre></div>
 <p>Use <code><a href="../../reference/panels.html">panels()</a></code> by setting a variable to be drawn on the x-axis (<code>xvar</code>), and (optional) parameter to sort the panels by:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../../reference/panels.html">panels</a></span>(fit_ml, <span class="dt">xvar =</span> <span class="st">"Days"</span>, <span class="dt">sort =</span> <span class="st">"Days"</span>)</a>

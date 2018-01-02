@@ -51,7 +51,7 @@ Notably, `forest()` draws forest plots for meta-analytic and multilevel
 models:
 
 ``` r
-forest(fit_rem, digits=0)
+forest(fit_rem)
 #> Picking joint bandwidth of 0.0227
 ```
 

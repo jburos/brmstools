@@ -106,7 +106,7 @@ from the parameter. Especially useful for plots where the "fixed"
 parameters should be shown next to their "random" counterparts.</p>
     
 
-    <pre class="usage"><span class='fu'>tidycoef</span>(<span class='no'>model</span>, <span class='kw'>pars</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>summary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>)</pre>
+    <pre class="usage"><span class='fu'>tidycoef</span>(<span class='no'>model</span>, <span class='kw'>grouping</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>pars</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>summary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -116,9 +116,14 @@ parameters should be shown next to their "random" counterparts.</p>
       <td><p>A brmsfit.</p></td>
     </tr>
     <tr>
+      <th>grouping</th>
+      <td><p>Name of grouping variable (e.g. <code>(1 | grouping)</code>). Defaults
+to <code>NA</code> which returns the unique / first grouping factor in model.</p></td>
+    </tr>
+    <tr>
       <th>pars</th>
       <td><p>Parameters to extract; must match exactly. Combine many with
-`c(...)`.</p></td>
+<code>c(...)</code>.</p></td>
     </tr>
     <tr>
       <th>summary</th>

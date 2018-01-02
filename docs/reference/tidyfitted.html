@@ -104,7 +104,7 @@
 plotting functions</p>
     
 
-    <pre class="usage"><span class='fu'>tidyfitted</span>(<span class='no'>model</span>, <span class='kw'>xvar</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>tidyfitted</span>(<span class='no'>model</span>, <span class='kw'>grouping</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>xvar</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -112,6 +112,11 @@ plotting functions</p>
     <tr>
       <th>model</th>
       <td><p>a brmsfit model</p></td>
+    </tr>
+    <tr>
+      <th>grouping</th>
+      <td><p>Name of grouping variable (e.g. <code>(1 | grouping)</code>). Defaults
+to <code>NA</code> which returns the unique / first grouping factor in model.</p></td>
     </tr>
     <tr>
       <th>xvar</th>
@@ -123,7 +128,7 @@ plotting functions</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passed to [brms::fitted()]</p></td>
+      <td><p>Passed to <code><a href='http://www.rdocumentation.org/packages/brms/topics/fitted.brmsfit'>brms::fitted.brmsfit()</a></code></p></td>
     </tr>
     </table>
     

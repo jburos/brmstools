@@ -41,7 +41,7 @@ Notably, `forest()` draws forest plots for meta-analytic and multilevel models:
 
 ```{r forest, echo=-1}
 load(here::here("vignettes/forest-plots/fit_rem.rda"))
-forest(fit_rem, digits=0)
+forest(fit_rem)
 ```
 
 # Panel plots

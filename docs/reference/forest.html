@@ -104,10 +104,10 @@
 especially useful for random-effects meta-analytic models.</p>
     
 
-    <pre class="usage"><span class='fu'>forest</span>(<span class='no'>model</span>, <span class='kw'>pars</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>av_name</span> <span class='kw'>=</span> <span class='st'>"Average"</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>show_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>col_ridge</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>fill_ridge</span> <span class='kw'>=</span> <span class='st'>"grey75"</span>,
-  <span class='kw'>density</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>rel_min_height</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.9</span>,
-  <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>theme_forest</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>forest</span>(<span class='no'>model</span>, <span class='kw'>grouping</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>pars</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
+  <span class='kw'>av_name</span> <span class='kw'>=</span> <span class='st'>"Average"</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>col_ridge</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>fill_ridge</span> <span class='kw'>=</span> <span class='st'>"grey75"</span>, <span class='kw'>density</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>rel_min_height</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.9</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>theme_forest</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -115,6 +115,11 @@ especially useful for random-effects meta-analytic models.</p>
     <tr>
       <th>model</th>
       <td><p>A brmsfit object.</p></td>
+    </tr>
+    <tr>
+      <th>grouping</th>
+      <td><p>Name of grouping variable (e.g. <code>(1 | grouping)</code>). Defaults
+to <code>NA</code> which returns the unique / first grouping factor in model.</p></td>
     </tr>
     <tr>
       <th>pars</th>
@@ -127,7 +132,7 @@ Defaults to 0.95.</p></td>
     </tr>
     <tr>
       <th>av_name</th>
-      <td><p>Name of average parameter (e.g. `"Meta-Analytic\nestimate"`)</p></td>
+      <td><p>Name of average parameter (e.g. <code>"Meta-Analytic\nestimate"</code>)</p></td>
     </tr>
     <tr>
       <th>sort</th>
@@ -157,11 +162,11 @@ and standard error below the meta-analytic estimates. Defaults to FALSE.</p></td
     </tr>
     <tr>
       <th>rel_min_height</th>
-      <td><p>Passed to [ggridges::geom_density_ridges()].</p></td>
+      <td><p>Passed to <code><a href='http://www.rdocumentation.org/packages/ggridges/topics/geom_density_ridges'>ggridges::geom_density_ridges()</a></code>.</p></td>
     </tr>
     <tr>
       <th>scale</th>
-      <td><p>Passed to [ggridges::geom_density_ridges()].</p></td>
+      <td><p>Passed to <code><a href='http://www.rdocumentation.org/packages/ggridges/topics/geom_density_ridges'>ggridges::geom_density_ridges()</a></code>.</p></td>
     </tr>
     <tr>
       <th>digits</th>
@@ -169,7 +174,7 @@ and standard error below the meta-analytic estimates. Defaults to FALSE.</p></td
     </tr>
     <tr>
       <th>theme_forest</th>
-      <td><p>Use [brmstools::theme_forest()] ggplot2 theme?</p></td>
+      <td><p>Use <code><a href='theme_forest.html'>theme_forest()</a></code> ggplot2 theme?</p></td>
     </tr>
     </table>
     

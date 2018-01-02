@@ -104,9 +104,9 @@
 in a single panel with (optional) the average fitted line.</p>
     
 
-    <pre class="usage"><span class='fu'>spaghetti</span>(<span class='no'>model</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>xvar</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>line_col</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
-  <span class='kw'>line_lty</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ribbon_col</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>ribbon_fill</span> <span class='kw'>=</span> <span class='st'>"grey60"</span>,
-  <span class='kw'>ribbon_alpha</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>average</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>spaghetti</span>(<span class='no'>model</span>, <span class='kw'>grouping</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>xvar</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>line_col</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>line_lty</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ribbon_col</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>ribbon_fill</span> <span class='kw'>=</span> <span class='st'>"grey60"</span>, <span class='kw'>ribbon_alpha</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>average</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -114,6 +114,11 @@ in a single panel with (optional) the average fitted line.</p>
     <tr>
       <th>model</th>
       <td><p>A brmsfit model</p></td>
+    </tr>
+    <tr>
+      <th>grouping</th>
+      <td><p>Name of grouping variable (e.g. <code>(1 | grouping)</code>). Defaults
+to <code>NA</code> which returns the unique / first grouping factor in model.</p></td>
     </tr>
     <tr>
       <th>level</th>
@@ -149,7 +154,7 @@ in a single panel with (optional) the average fitted line.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passed to [tidyfitted()]</p></td>
+      <td><p>Passed to <code><a href='tidyfitted.html'>tidyfitted()</a></code></p></td>
     </tr>
     </table>
     
