@@ -11,8 +11,10 @@ get_grouping <- function(model, grouping){
   if (is.na(grouping)) {
     out <- unique(model$ranef$group)[1]
     # Message if automatically using one of many grouping factors
-    msg <- paste("Using", out, "as grouping factor. Change with 'grouping' argument.")
-    message(msg)
+    if (length(unique(model$ranef$group)) > 1) {
+      msg <- paste("Using", out, "as grouping factor. Change with 'grouping' argument.")
+      message(msg)
+    }
   } else { out <- grouping }
 
   out
