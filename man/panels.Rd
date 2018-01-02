@@ -4,12 +4,15 @@
 \alias{panels}
 \title{Panel plots for brmsfit models}
 \usage{
-panels(model, level = 0.95, data = T, sort = NA, xvar = NA,
-  line_col = "black", line_lty = 1, ribbon_col = NA,
+panels(model, grouping = NA, level = 0.95, data = T, sort = NA,
+  xvar = NA, line_col = "black", line_lty = 1, ribbon_col = NA,
   ribbon_fill = "grey60", ribbon_alpha = 0.2, ...)
 }
 \arguments{
 \item{model}{A brmsfit model}
+
+\item{grouping}{Name of grouping variable (e.g. \code{(1 | grouping)}). Defaults
+to \code{NA} which returns the unique / first grouping factor in model.}
 
 \item{level}{For limits of credible intervals}
 

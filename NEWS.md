@@ -1,6 +1,8 @@
 # brmstools 0.5.0.9000
 
 * Use markdown in roxygen documentation
+* Allow user to choose grouping factor
+  * Use get_grouping() internally to choose grouping factor
 
 # brmstools 0.5.0
 

@@ -4,6 +4,8 @@
 #' showing parameter means (and CIs) for each grouping factor.
 #'
 #' @param model A brmsfit model
+#' @param grouping Name of grouping variable (e.g. `(1 | grouping)`). Defaults
+#' to `NA` which returns the unique / first grouping factor in model.
 #' @param level For limits of credible intervals
 #' @param pars Which parameters to show (defaults to NA (all parameters)).
 #' @param type Show population level ("b"), group-specific ("r"), or
@@ -20,6 +22,7 @@
 #' @return a ggplot
 #' @export
 coefplot <- function(model,
+                     grouping = NA,
                      level = .95,
                      pars = NA,
                      type = "br",
@@ -32,12 +35,12 @@ coefplot <- function(model,
                      r_alpha = .5,
                      ...) {
   d <- tidycoef(model, level = level, pars = pars, summary = T)
+  grouping <- get_grouping(model, grouping)
   b <- d[d[["type"]]=="b", ]
   r <- d[d[["type"]]=="r", ]
   probs <- c(.5 - level / 2, .5 + level / 2)
   lwr <- paste0(probs[1]*100, "%ile")
   upr <- paste0(probs[2]*100, "%ile")
-  grouping <- unique(model$ranef$group)
 
   g <- ggplot(b, aes_string(x="Estimate", y="Parameter"))
   if (grepl("r", type)) {

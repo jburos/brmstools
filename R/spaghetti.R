@@ -4,6 +4,8 @@
 #' in a single panel with (optional) the average fitted line.
 #'
 #' @param model A brmsfit model
+#' @param grouping Name of grouping variable (e.g. `(1 | grouping)`). Defaults
+#' to `NA` which returns the unique / first grouping factor in model.
 #' @param level For limits of credible intervals
 #' @param xvar What variable should be on the x-axis
 #' @param line_col Line color
@@ -17,6 +19,7 @@
 #' @return a ggplot
 #' @export
 spaghetti <- function(model,
+                      grouping = NA,
                       level = .95,
                       xvar = NA,
                       line_col = "black",
@@ -28,7 +31,7 @@ spaghetti <- function(model,
                       ...) {
 
   d <- tidyfitted(model, level = level)
-  grouping <- unique(model$ranef$group)
+  grouping <- get_grouping(model, grouping)
   probs <- c(.5 - level / 2, .5 + level / 2)
   lwr <- paste0(probs[1]*100, "%ile")
   upr <- paste0(probs[2]*100, "%ile")

@@ -4,10 +4,13 @@
 \alias{tidycoef}
 \title{Tidy parameters from brmsfit objects}
 \usage{
-tidycoef(model, pars = NA, summary = FALSE, level = 0.95)
+tidycoef(model, grouping = NA, pars = NA, summary = FALSE, level = 0.95)
 }
 \arguments{
 \item{model}{A brmsfit.}
+
+\item{grouping}{Name of grouping variable (e.g. \code{(1 | grouping)}). Defaults
+to \code{NA} which returns the unique / first grouping factor in model.}
 
 \item{pars}{Parameters to extract; must match exactly. Combine many with
 \code{c(...)}.}

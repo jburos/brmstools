@@ -6,6 +6,8 @@
 #' parameters should be shown next to their "random" counterparts.
 #'
 #' @param model A brmsfit.
+#' @param grouping Name of grouping variable (e.g. `(1 | grouping)`). Defaults
+#' to `NA` which returns the unique / first grouping factor in model.
 #' @param pars Parameters to extract; must match exactly. Combine many with
 #' `c(...)`.
 #' @param summary Should summary statistics be returned instead of raw values.
@@ -13,10 +15,13 @@
 #'
 #' @return a tibble
 #' @export
-tidycoef <- function(model, pars = NA, summary = FALSE, level = .95) {
+tidycoef <- function(model,
+                     grouping = NA,
+                     pars = NA,
+                     summary = FALSE,
+                     level = .95) {
 
-  grouping <- unique(model$ranef$group)
-  if (length(grouping) > 1) stop("More than 1 grouping factor.", call. = F)
+  grouping <- get_grouping(model, grouping)
   if (is.na(pars)) {
     parameters <- dimnames(coef(model)[[grouping]])[[3]]
   } else {

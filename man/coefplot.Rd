@@ -4,13 +4,16 @@
 \alias{coefplot}
 \title{Coefficient plots for brms models}
 \usage{
-coefplot(model, level = 0.95, pars = NA, type = "br",
+coefplot(model, grouping = NA, level = 0.95, pars = NA, type = "br",
   interval_col = "black", interval_h = 0.1, point_col = "black",
   point_size = 3, r_col = "black", r_intervals = FALSE, r_alpha = 0.5,
   ...)
 }
 \arguments{
 \item{model}{A brmsfit model}
+
+\item{grouping}{Name of grouping variable (e.g. \code{(1 | grouping)}). Defaults
+to \code{NA} which returns the unique / first grouping factor in model.}
 
 \item{level}{For limits of credible intervals}
 

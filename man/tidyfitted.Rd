@@ -4,10 +4,13 @@
 \alias{tidyfitted}
 \title{Tidy fitted values from brmsfit models}
 \usage{
-tidyfitted(model, xvar = NA, level = 0.95, ...)
+tidyfitted(model, grouping = NA, xvar = NA, level = 0.95, ...)
 }
 \arguments{
 \item{model}{a brmsfit model}
+
+\item{grouping}{Name of grouping variable (e.g. \code{(1 | grouping)}). Defaults
+to \code{NA} which returns the unique / first grouping factor in model.}
 
 \item{xvar}{Predictor variable to evaluate fitted values on}
 

@@ -4,6 +4,8 @@
 #' separate panel.
 #'
 #' @param model A brmsfit model
+#' @param grouping Name of grouping variable (e.g. `(1 | grouping)`). Defaults
+#' to `NA` which returns the unique / first grouping factor in model.
 #' @param level For limits of credible intervals
 #' @param data Should data be shown?
 #' @param sort Sort panels based on a variable
@@ -18,6 +20,7 @@
 #' @return a ggplot
 #' @export
 panels <- function(model,
+                   grouping = NA,
                    level = .95,
                    data = T,
                    sort = NA,
@@ -31,7 +34,7 @@ panels <- function(model,
 
   d <- tidyfitted(model, level = level, ...)
   d <- d[d[["type"]]=="r",]
-  grouping <- unique(model$ranef$group)
+  grouping <- get_grouping(model, grouping)
 
   # Order panels on desired parameter
   if (!is.na(sort)) {

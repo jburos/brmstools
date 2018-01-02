@@ -4,6 +4,8 @@
 #' especially useful for random-effects meta-analytic models.
 #'
 #' @param model A brmsfit object.
+#' @param grouping Name of grouping variable (e.g. `(1 | grouping)`). Defaults
+#' to `NA` which returns the unique / first grouping factor in model.
 #' @param pars Parameters to plot, defaults to all (NA).
 #' @param level The "Confidence" level for the Credible Intervals.
 #' Defaults to 0.95.
@@ -26,6 +28,7 @@
 #' @importFrom stats coef
 #' @export
 forest <- function(model,
+                   grouping = NA,
                    pars = NA,
                    level = .95,
                    av_name = "Average",
@@ -48,8 +51,7 @@ forest <- function(model,
     )
   }
 
-  grouping <- unique(model$ranef$group)
-  if (length(grouping) > 1) stop("More than 1 grouping factor.", call. = F)
+  grouping <- get_grouping(model, grouping)
   probs <- c(.5 - level / 2, .5 + level / 2)
   lwr <- paste0(probs[1]*100, "%ile")
   upr <- paste0(probs[2]*100, "%ile")

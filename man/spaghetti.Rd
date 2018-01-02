@@ -4,12 +4,15 @@
 \alias{spaghetti}
 \title{Spaghetti plots for brmsfit objects}
 \usage{
-spaghetti(model, level = 0.95, xvar = NA, line_col = "black",
-  line_lty = 1, ribbon_col = NA, ribbon_fill = "grey60",
-  ribbon_alpha = 0.3, average = T, ...)
+spaghetti(model, grouping = NA, level = 0.95, xvar = NA,
+  line_col = "black", line_lty = 1, ribbon_col = NA,
+  ribbon_fill = "grey60", ribbon_alpha = 0.3, average = T, ...)
 }
 \arguments{
 \item{model}{A brmsfit model}
+
+\item{grouping}{Name of grouping variable (e.g. \code{(1 | grouping)}). Defaults
+to \code{NA} which returns the unique / first grouping factor in model.}
 
 \item{level}{For limits of credible intervals}
 

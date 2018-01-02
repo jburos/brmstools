@@ -4,16 +4,20 @@
 #' plotting functions
 #'
 #' @param model a brmsfit model
+#' @param grouping Name of grouping variable (e.g. `(1 | grouping)`). Defaults
+#' to `NA` which returns the unique / first grouping factor in model.
 #' @param xvar Predictor variable to evaluate fitted values on
 #' @param level For credible interval limits.
 #' @param ... Passed to [brms::fitted.brmsfit()]
 #'
 #' @return a tibble
 #' @export
-tidyfitted <- function(model, xvar = NA, level = .95, ...) {
+tidyfitted <- function(model,
+                       grouping = NA,
+                       xvar = NA,
+                       level = .95, ...) {
 
-  grouping <- unique(model$ranef$group)
-  if (length(grouping) > 1) stop("More than 1 grouping factor.", call. = F)
+  grouping <- get_grouping(model, grouping)
 
   # By default, use all predictor terms
   predictors <- all.vars(model$formula$formula[[3]])
