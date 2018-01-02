@@ -56,8 +56,14 @@ forest <- function(model,
   lwr <- paste0(probs[1]*100, "%ile")
   upr <- paste0(probs[2]*100, "%ile")
 
-  samples <- tidycoef(model, pars=pars)
-  samples_sum <- tidycoef(model, pars=pars, summary = T, level = level)
+  samples <- tidycoef(model,
+                      pars = pars,
+                      grouping = grouping)
+  samples_sum <- tidycoef(model,
+                          pars = pars,
+                          grouping = grouping,
+                          summary = T,
+                          level = level)
 
   # Rename average effects
   samples[[grouping]] <- ifelse(is.na(samples[[grouping]]),
