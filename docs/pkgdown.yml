@@ -1,0 +1,8 @@
+pandoc: 2.2.1
+pkgdown: 1.1.0
+pkgdown_sha: ~
+articles:
+  coefficient-plots: coefficient-plots/coefficient-plots.html
+  forest-plots: forest-plots/forest-plots.html
+  panel-spaghetti-plots: panel-spaghetti-plots/panel-spaghetti-plots.html
+
