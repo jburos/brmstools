@@ -33,8 +33,8 @@ spaghetti <- function(model,
   grouping <- get_grouping(model, grouping)
   d <- tidyfitted(model, level = level, grouping = grouping)
   probs <- c(.5 - level / 2, .5 + level / 2)
-  lwr <- paste0(probs[1]*100, "%ile")
-  upr <- paste0(probs[2]*100, "%ile")
+  lwr <- paste0("Q", probs[1]*100)
+  upr <- paste0("Q", probs[2]*100)
 
   g <- ggplot(d[d[["type"]]=="r",],
               aes_string(x=xvar, y="Estimate", group=grouping)) +

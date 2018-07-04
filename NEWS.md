@@ -1,3 +1,7 @@
+# brmstools 0.5.2
+
+* Fixed functions to work with brms' new names for interval limits
+
 # brmstools 0.5.0.9000
 
 * Use markdown in roxygen documentation

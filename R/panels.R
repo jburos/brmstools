@@ -51,8 +51,8 @@ panels <- function(model,
   }
 
   probs <- c(.5 - level / 2, .5 + level / 2)
-  lwr <- paste0(probs[1]*100, "%ile")
-  upr <- paste0(probs[2]*100, "%ile")
+  lwr <- paste0("Q", probs[1]*100)
+  upr <- paste0("Q", probs[2]*100)
   g <- ggplot(d, aes_string(x=xvar, y="Estimate")) +
     geom_ribbon(aes_(ymin=as.name(lwr), ymax=as.name(upr)),
                 alpha = ribbon_alpha,
