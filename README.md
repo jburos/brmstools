@@ -10,6 +10,16 @@ brmstools provides convenient plotting and post-processing functions for
 brmsfit objects (bayesian regression models fitted with the [brms R
 package](https://github.com/paul-buerkner/brms)).
 
+brmstools is in beta version so will probably break down with some
+inputs: [Suggestions for improvements and bug
+reports](https://github.com/mvuorre/brmstools/issues) are welcomed. For
+anything more complex I strongly recommend using brms’ native functions
+instead (particularly its `marginal_effects()` and `hypothesis()`
+methods. Combined with ggplot2 those functions will create any
+visualization you can think of.)
+
+# Install brmstools
+
 Install brmstools from GitHub with
 [devtools](https://cran.r-project.org/package=devtools):
 
@@ -25,25 +35,11 @@ library(brmstools)
 #> Loading required package: ggplot2
 #> Loading required package: brms
 #> Loading required package: Rcpp
-#> Loading 'brms' package (version 2.0.1). Useful instructions
+#> Loading 'brms' package (version 2.3.4). Useful instructions
 #> can be found by typing help('brms'). A more detailed introduction
 #> to the package is available through vignette('brms_overview').
 #> Run theme_set(theme_default()) to use the default bayesplot theme.
 ```
-
-brmstools is in beta version so will probably break down with some
-inputs: [Suggestions for improvements and bug
-reports](https://github.com/mvuorre/brmstools/issues) are warmly
-welcomed.
-
-[brms](https://github.com/paul-buerkner/brms) makes it easy to fit
-(complex) models with Stan. The flexible `brms::marginal_effects()` and
-`brms::plot()` methods allow various visualizations of fitted brms
-models. However, I found myself repeatedly writing code for spaghetti,
-forest, and panel plots, all of which are difficult to create with
-built-in brms functions. This package provides functions for easily
-creating these types of figures, and other miscellaneous helper
-functions for post-processing brmsfit models.
 
 # Forest plots
 
