@@ -5,9 +5,10 @@
 \title{Forest plots for brmsfit objects}
 \usage{
 forest(model, grouping = NA, pars = NA, level = 0.95,
-  av_name = "Average", sort = TRUE, show_data = FALSE, col_ridge = NA,
-  fill_ridge = "grey75", density = TRUE, text = TRUE,
-  rel_min_height = 0.01, scale = 0.9, digits = 2, theme_forest = TRUE)
+  av_name = "Average", sort = TRUE, show_data = FALSE,
+  col_ridge = NA, fill_ridge = "grey75", density = TRUE,
+  text = TRUE, rel_min_height = 0.01, scale = 0.9, digits = 2,
+  theme_forest = TRUE)
 }
 \arguments{
 \item{model}{A brmsfit object.}

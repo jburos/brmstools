@@ -4,7 +4,8 @@
 \alias{tidycoef}
 \title{Tidy parameters from brmsfit objects}
 \usage{
-tidycoef(model, grouping = NA, pars = NA, summary = FALSE, level = 0.95)
+tidycoef(model, grouping = NA, pars = NA, summary = FALSE,
+  level = 0.95)
 }
 \arguments{
 \item{model}{A brmsfit.}
