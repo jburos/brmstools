@@ -131,6 +131,8 @@ forest <- function(model,
   }
   if (show_data & length(unique(samples_sum[["Parameter"]])) == 1) {
     tmp <- dplyr::left_join(model$data, samples_sum[, c(grouping, "order")])
+    tmp$semin <- tmp[,1] - tmp[,2]
+    tmp$semax <- tmp[,1] + tmp[,2]
     g <- g + geom_point(
       data = tmp,
       aes_string(
@@ -140,7 +142,18 @@ forest <- function(model,
         )[1],
         "order"
       ),
-      shape = 8
+      shape = 8,
+      position = position_nudge(y=-.1)
+    )
+    g <- g + geom_segment(
+      data = tmp,
+      aes_string(
+        x = "semin",
+        xend = "semax",
+        y = "order",
+        yend = "order"
+      ),
+      position = position_nudge(y=-.1)
     )
   }
   g <- g + facet_wrap("Parameter", scales="free", strip.position = "bottom")

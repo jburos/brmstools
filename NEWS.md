@@ -1,3 +1,7 @@
+# brmstools 0.5.3
+
+* Include data standard errors in forest plots if requested.
+
 # brmstools 0.5.2
 
 * Fixed functions to work with brms' new names for interval limits
