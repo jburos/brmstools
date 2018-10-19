@@ -131,20 +131,10 @@ forest <- function(model,
   }
   if (show_data & length(unique(samples_sum[["Parameter"]])) == 1) {
     tmp <- dplyr::left_join(model$data, samples_sum[, c(grouping, "order")])
-    tmp$semin <- tmp[,1] - tmp[,2]
-    tmp$semax <- tmp[,1] + tmp[,2]
-    g <- g + geom_point(
-      data = tmp,
-      aes_string(
-        attr(
-          attr(model$data, "terms"),
-          "term.labels"
-        )[1],
-        "order"
-      ),
-      shape = 8,
-      position = position_nudge(y=-.1)
-    )
+    yname <- attr(attr(model$data, "terms"), "term.labels")[1]
+    sename <- attr(attr(model$data, "terms"), "term.labels")[2]
+    tmp$semin <- tmp[,yname] - tmp[,sename]
+    tmp$semax <- tmp[,yname] + tmp[,sename]
     g <- g + geom_segment(
       data = tmp,
       aes_string(
@@ -153,6 +143,12 @@ forest <- function(model,
         y = "order",
         yend = "order"
       ),
+      position = position_nudge(y=-.1)
+    )
+    g <- g + geom_point(
+      data = tmp,
+      aes_string(yname, y = "order"),
+      shape = 21, fill = "white",
       position = position_nudge(y=-.1)
     )
   }
