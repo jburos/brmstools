@@ -43,7 +43,8 @@ forest <- function(model,
                    scale = 0.9,
                    digits = 2,
                    theme_forest = TRUE,
-                   top = NULL) {
+                   top = NULL,
+		   excl = NULL) {
 
   # Requires the ggridges package
   if (!requireNamespace("ggridges", quietly = TRUE)) {
@@ -83,19 +84,27 @@ forest <- function(model,
     round(samples_sum[[upr]], digits), "]"
   )
   # Filter effects
-  if (!is.null(top)) {
-    keep_rows <- samples_sum %>%
-      dplyr::group_by(type, Parameter) %>%
-      dplyr::mutate(estimate_rank = rank(abs(Estimate))) %>%
+  keep_rows <- samples_sum
+  if (!is.null(excl)) {
+    keep_rows <- keep_rows %>%
+      dplyr::rowwise() %>%
+      dplyr::mutate(keep = !dplyr::between(excl, rlang::UQ(rlang::sym(lwr)), rlang::UQ(rlang::sym(upr)))) %>%
       dplyr::ungroup() %>%
-      dplyr::filter(estimate_rank <= top) %>%
-      dplyr::select(type, Parameter)
-    samples_sum <- samples_sum %>%
-      dplyr::semi_join(keep_rows, by = c('type', 'Parameter'))
-    samples <- samples %>%
-      dplyr::semi_join(keep_rows, by = c('type', 'Parameter'))
-    rm(keep_rows)
+      dplyr::filter(keep == TRUE | rlang::UQ(rlang::sym(grouping)) == av_name)
   }
+  if (!is.null(top)) {
+    keep_rows <- keep_rows %>%
+      dplyr::group_by(type, Parameter) %>%
+      dplyr::mutate(estimate_rank = rank(desc(abs(Estimate)))) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(estimate_rank <= top | rlang::UQ(rlang::sym(grouping)) == av_name)
+  }
+  keep_rows <- keep_rows %>%
+      dplyr::select(type, Parameter, one_of(grouping))
+  samples_sum <- samples_sum %>%
+      dplyr::semi_join(keep_rows, by = c('type', 'Parameter', grouping))
+  samples <- samples %>%
+      dplyr::semi_join(keep_rows, by = c('type', 'Parameter', grouping))
   # Order effects
   if (sort) samples_sum <- dplyr::arrange_(samples_sum, "type", "Parameter", "Estimate")
   samples_sum[["order"]] <- forcats::fct_inorder(
