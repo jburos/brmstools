@@ -22,6 +22,7 @@
 #' @param scale Passed to [ggridges::geom_density_ridges()].
 #' @param digits Digits to display in numerical summaries.
 #' @param theme_forest Use [theme_forest()] ggplot2 theme?
+#' @param top Display top N results by absolute value (default: NULL)
 #'
 #' @return a ggplot
 #'
@@ -41,7 +42,8 @@ forest <- function(model,
                    rel_min_height = .01,
                    scale = 0.9,
                    digits = 2,
-                   theme_forest = TRUE) {
+                   theme_forest = TRUE,
+                   top = NULL) {
 
   # Requires the ggridges package
   if (!requireNamespace("ggridges", quietly = TRUE)) {
@@ -80,6 +82,20 @@ forest <- function(model,
     ", ",
     round(samples_sum[[upr]], digits), "]"
   )
+  # Filter effects
+  if (!is.null(top)) {
+    keep_rows <- samples_sum %>%
+      dplyr::group_by(type, Parameter) %>%
+      dplyr::mutate(estimate_rank = rank(abs(Estimate))) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(estimate_rank <= top) %>%
+      dplyr::select(type, Parameter)
+    samples_sum <- samples_sum %>%
+      dplyr::semi_join(keep_rows, by = c('type', 'Parameter'))
+    samples <- samples %>%
+      dplyr::semi_join(keep_rows, by = c('type', 'Parameter'))
+    rm(keep_rows)
+  }
   # Order effects
   if (sort) samples_sum <- dplyr::arrange_(samples_sum, "type", "Parameter", "Estimate")
   samples_sum[["order"]] <- forcats::fct_inorder(

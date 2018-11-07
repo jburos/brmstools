@@ -5,10 +5,10 @@
 \title{Forest plots for brmsfit objects}
 \usage{
 forest(model, grouping = NA, pars = NA, level = 0.95,
-  av_name = "Average", sort = TRUE, show_data = FALSE,
-  col_ridge = NA, fill_ridge = "grey75", density = TRUE,
-  text = TRUE, rel_min_height = 0.01, scale = 0.9, digits = 2,
-  theme_forest = TRUE)
+  av_name = "Average", sort = TRUE, show_data = FALSE, col_ridge = NA,
+  fill_ridge = "grey75", density = TRUE, text = TRUE,
+  rel_min_height = 0.01, scale = 0.9, digits = 2, theme_forest = TRUE,
+  top = NULL)
 }
 \arguments{
 \item{model}{A brmsfit object.}
@@ -44,6 +44,8 @@ and standard error below the meta-analytic estimates. Defaults to FALSE.}
 \item{digits}{Digits to display in numerical summaries.}
 
 \item{theme_forest}{Use \code{\link[=theme_forest]{theme_forest()}} ggplot2 theme?}
+
+\item{top}{Display top N results by absolute value (default: NULL)}
 }
 \value{
 a ggplot

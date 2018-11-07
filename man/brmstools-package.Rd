@@ -7,7 +7,7 @@
 \title{brmstools: Tools and Helpers for brms Package}
 \description{
 Postprocessing and plotting tools for brmsfit objects
-  from brms package.
+from brms package.
 }
 \author{
 \strong{Maintainer}: Matti Vuorre \email{mv2521@columbia.edu} (0000-0001-5052-066X)
